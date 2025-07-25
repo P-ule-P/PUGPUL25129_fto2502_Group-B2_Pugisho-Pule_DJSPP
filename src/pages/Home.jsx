@@ -9,7 +9,6 @@ const ITEMS_PER_PAGE = 12;
 
 export default function Home() {
   const {
-    searchTerm,
     genre,
     sort,
     setGenre,

@@ -65,22 +65,14 @@
 
 /* Phones (480px and below) */
 @media (max-width: 480px) {
-  .header {
+  .header-title {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .header-title {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
   }
 
   .search-container {
     width: 100%;
     justify-content: space-between;
-    order: 1;
   }
 
   .search-input {
@@ -104,5 +96,8 @@
 
   .ep-desc {
     font-size: 0.8rem;
+  }
+  .audio-player .controls {
+    gap: 0.25rem;
   }
 }

@@ -1,0 +1,99 @@
+.carousel-container {
+  padding: 1rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.carousel-header {
+  display: flex;
+  align-items: center;
+  font-family: "Playwrite AU QLD", serif;
+  font-weight: 700;
+  font-size: small;
+  color: var(--text);
+  margin-bottom: -1rem;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-btn {
+  padding: 6px 10px;
+  border: 1px solid var(--card);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
+}
+
+.carousel-btn:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-btn:hover {
+  transform: translateY(-5px);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  background: var(--card);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 10px 9px 10px 15px rgba(17, 2, 232, 0.5);
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-item {
+  min-width: 180px;
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: transform 0.2s, background-color 0.3s ease, color 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.carousel-item:hover {
+  transform: scale(1.05);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.carousel-info {
+  margin-top: 0.5rem;
+  color: var(--text);
+}
+
+.genres {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+[data-theme="dark"] .genres {
+  color: #aaa;
+}

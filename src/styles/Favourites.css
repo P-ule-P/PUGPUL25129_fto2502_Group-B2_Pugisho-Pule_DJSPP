@@ -1,0 +1,187 @@
+.fav-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Playwrite AU QLD", serif;
+  color: var(--text);
+}
+
+.favourites-page {
+  padding: 2rem;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.favourites-page h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: var(--text);
+}
+
+.favourites-page section {
+  margin-bottom: 2.5rem;
+}
+
+.favourites-page h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.fav-filter-select {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid var(--card);
+  border-radius: 8px;
+  background-color: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.fav-filter-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.fav-episode-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: var(--text);
+}
+
+.fav-episode-desc {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .fav-episode-desc {
+  color: #aaa;
+}
+
+.fav-added-date {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: auto;
+}
+
+[data-theme="dark"] .fav-added-date {
+  color: #888;
+}
+
+.fav-no-episodes {
+  font-size: 1rem;
+  color: #777;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+[data-theme="dark"] .fav-no-episodes {
+  color: #aaa;
+}
+
+.fav-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0 1rem;
+}
+
+.fav-controls-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0 1.5rem 1rem;
+  flex-wrap: wrap;
+  font-weight: bolder;
+}
+
+.reset-button {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.reset-button:hover {
+  background-color: red;
+  color: var(--bg);
+}
+
+.fav-episode-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.fav-episode-card {
+  background: var(--card);
+  color: var(--text);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 1rem;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.2s, background-color 0.3s ease, color 0.3s ease;
+}
+
+.fav-episode-card:hover {
+  transform: translateY(-5px);
+}
+
+.fav-cover {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.fav-episode-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fav-episode-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.fav-episode-desc {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .fav-episode-desc {
+  color: #aaa;
+}
+
+.fav-added-date {
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .fav-added-date {
+  color: #888;
+}
+
+.fav-actions {
+  margin-top: auto;
+}
