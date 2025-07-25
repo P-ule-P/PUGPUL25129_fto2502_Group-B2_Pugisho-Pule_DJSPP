@@ -1,4 +1,5 @@
-const KEY = "listening_progress";
+const USER_ID = "mockUser123"; // TODO: Replace with dynamic user ID
+const KEY = `listening_progress_${USER_ID}`;
 
 /**
  * Load progress object from localStorage

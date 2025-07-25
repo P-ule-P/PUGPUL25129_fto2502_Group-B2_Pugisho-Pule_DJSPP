@@ -5,6 +5,7 @@ import {
   sortFavourites,
 } from "../utils/favouritesStorage";
 import { FavouriteButton } from "../components/FavouriteButton";
+import { resetAllProgress } from "../utils/progressStorage";
 import "../styles/Favourites.css";
 
 /**
@@ -54,6 +55,20 @@ export const Favourites = () => {
           className="reset-button"
         >
           Clear All Favourites
+        </button>
+        <button
+          onClick={() => {
+            const confirmed = window.confirm(
+              "Are you sure you want to reset all listening history?"
+            );
+            if (confirmed) {
+              resetAllProgress();
+              alert("All listening progress has been cleared.");
+            }
+          }}
+          className="reset-button"
+        >
+          Reset Listening History
         </button>
       </div>
 
