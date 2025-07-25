@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchShowById } from "../utils/api";
 import { genres } from "../data/genres";
+import { useAudioPlayer } from "../context/AudioPlayerContext";
+import { getEpisodeProgress } from "../utils/progressStorage";
+import { FavouriteButton } from "../components/FavouriteButton";
 
 export default function ShowDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { setAudioSrc } = useAudioPlayer();
+
   const [show, setShow] = useState(null);
   const [selectedSeasonIndex, setSelectedSeasonIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -25,7 +30,7 @@ export default function ShowDetail() {
     fetchData();
   }, [id]);
 
-  const handleGoBack = () => navigate(-1);
+  const handleGoBack = () => navigate("/");
 
   if (loading) return <p className="status">Loading show details...</p>;
   if (error) return <p className="status error">Error: {error}</p>;
@@ -42,24 +47,19 @@ export default function ShowDetail() {
 
   return (
     <div className="show-detail">
-      <header className="header">
+      <header className="show-header">
         <div className="left-section">
           <button className="back-icon" onClick={handleGoBack}>
             ←
           </button>
-          <h1 className="header-title">
-            <img
-              src="/assets/logo.png"
-              alt="Podcast Logo"
-              className="podcast-logo"
-            />
-            PodcastApp
-          </h1>
+          <h1 className="header-title">Binge Podcast</h1>
         </div>
-
         <div className="right-section">
-          <img src="/assets/search.png" alt="Search" className="search-icon" />
-          <img src="/assets/user.png" alt="Profile" className="profile-icon" />
+          <img
+            src="/assets/logo-2.gif"
+            alt="Podcast Logo"
+            className="carousel-logo"
+          />
         </div>
       </header>
 
@@ -71,26 +71,26 @@ export default function ShowDetail() {
 
           <div className="genre-time-conatiner">
             <div>
-              <span className="colorGrey">GENRES</span> <br></br>
+              <span className="colorGrey">GENRES</span> <br />
               <div className="genre-tags">
                 {genreNames.map((g) => (
                   <span key={g}>{g}</span>
                 ))}
               </div>
             </div>
-
             <div>
-              <span className="colorGrey">LAST UPDATED</span> <br></br>
+              <span className="colorGrey">LAST UPDATED</span> <br />
               <p>{new Date(show.updated).toLocaleDateString()}</p>
             </div>
           </div>
+
           <div className="total-seasons-episodes">
             <p>
-              <span className="colorGrey">TOTAL SEASONS</span> <br></br>
+              <span className="colorGrey">TOTAL SEASONS</span> <br />
               {show.seasons.length} Seasons
             </p>
             <p>
-              <span className="colorGrey">TOTAL EPISODES</span> <br></br>
+              <span className="colorGrey">TOTAL EPISODES</span> <br />
               {totalEpisodes} Episodes
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function ShowDetail() {
               src={currentSeason.image}
               alt="Season"
               className="season-img"
-            />{" "}
+            />
           </div>
           <div>
             <h3>{currentSeason.title}</h3>
@@ -135,22 +135,64 @@ export default function ShowDetail() {
         </div>
 
         <ul className="episode-list">
-          {currentSeason.episodes.map((ep, index) => (
-            <li key={ep.title} className="episode">
-              <img
-                src={currentSeason.image}
-                alt="Season"
-                className="episode-img"
-              />
-              <div>
-                <p className="ep-number">Ep {index + 1}</p>
-                <p className="ep-title">{ep.title || "Untitled Episode"}</p>
-                <p className="ep-desc">
-                  {(ep.description || "").slice(0, 120)}...
-                </p>
-              </div>
-            </li>
-          ))}
+          {currentSeason.episodes.map((ep, index) => {
+            const episodeId = `${show.id}-${selectedSeasonIndex + 1}-${
+              index + 1
+            }`;
+            const progress = getEpisodeProgress(episodeId);
+            const percent =
+              ep.audioLength && progress
+                ? Math.floor((progress.position / ep.audioLength) * 100)
+                : 0;
+
+            const episodeData = {
+              ...ep,
+              id: episodeId,
+              showTitle: show.title,
+              season: selectedSeasonIndex + 1,
+              episode: index + 1,
+            };
+
+            return (
+              <li key={episodeId} className="episode">
+                <img
+                  src={currentSeason.image}
+                  alt="Season"
+                  className="episode-img"
+                />
+                <div>
+                  <p className="ep-number">Ep {index + 1}</p>
+                  <p className="ep-title">{ep.title || "Untitled Episode"}</p>
+                  <p className="ep-desc">
+                    {(ep.description || "").slice(0, 120)}...
+                  </p>
+
+                  <div className="progress-wrapper">
+                    <div className="progress-track">
+                      <div
+                        className="progress-fill"
+                        style={{ width: `${percent}%` }}
+                      />
+                    </div>
+                    {progress?.finished && (
+                      <span className="finished-icon">✅ Finished</span>
+                    )}
+                  </div>
+
+                  <div className="episode-actions">
+                    <button
+                      className="play-button"
+                      onClick={() => setAudioSrc(episodeData)}
+                    >
+                      ▶️ Play
+                    </button>
+
+                    <FavouriteButton episode={episodeData} />
+                  </div>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

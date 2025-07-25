@@ -1,23 +1,21 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ShowDetail from "./pages/ShowDetail";
+import { Favourites } from "./pages/Favourites";
+import { Header } from "./components/Header";
+import { AudioPlayer } from "./components/AudioPlayer";
 
-/**
- * Root component that defines the routing structure for the app.
- *
- * @returns {JSX.Element} The application with routing setup.
- */
 export default function App() {
   return (
-    <Router>
+    <>
+      <Header />
       <Routes>
-        {/* Route for the homepage displaying all podcasts */}
         <Route path="/" element={<Home />} />
-
-        {/* Route for detailed view of a podcast show based on ID */}
         <Route path="/show/:id" element={<ShowDetail />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
-    </Router>
+      <AudioPlayer />
+    </>
   );
 }

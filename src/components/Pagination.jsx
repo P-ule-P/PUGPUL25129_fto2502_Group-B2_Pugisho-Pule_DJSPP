@@ -1,14 +1,10 @@
 import React from "react";
 
 /**
- * Pagination component to navigate through pages of podcast results.
- *
- * @component
- * @param {Object} props
- * @param {number} props.currentPage - The currently active page number.
- * @param {number} props.totalPages - Total number of pages available.
- * @param {Function} props.onPageChange - Callback to update the current page when a new one is selected.
- * @returns {JSX.Element|null} The rendered Pagination component or null if only one page exists.
+ * Pagination component
+ * @param {number} currentPage - Active page number
+ * @param {number} totalPages - Total number of pages
+ * @param {Function} onPageChange - Callback for page number click
  */
 export default function Pagination({ currentPage, totalPages, onPageChange }) {
   if (totalPages <= 1) return null;

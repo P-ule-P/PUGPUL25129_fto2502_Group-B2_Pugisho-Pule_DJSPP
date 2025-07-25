@@ -1,0 +1,78 @@
+.audio-player {
+  position: fixed;
+  bottom: 20px; /* Give some space from bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%; /* 60% of screen width */
+  max-width: 800px; /* Optional: prevent too wide on large screens */
+  background: white;
+  color: black;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  padding: 1.5rem; /* Increased padding */
+  z-index: 1000;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.audio-player .info {
+  flex: 1;
+}
+
+.audio-player .controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.audio-player input[type="range"] {
+  width: 100%;
+  max-width: 150px;
+}
+
+.audio-player button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.audio-player button:hover {
+  background: #f5f5f5;
+}
+
+.audio-player .progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #007bff;
+  width: 0%;
+}
+
+.audio-player.idle {
+  opacity: 0.8;
+  background-color: #f5f5f5;
+}
+
+.audio-player.idle .controls button {
+  cursor: not-allowed;
+}
+
+.time-display {
+  display: flex;
+  gap: 0.3rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  min-width: 120px;
+}
+
+.episode-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}

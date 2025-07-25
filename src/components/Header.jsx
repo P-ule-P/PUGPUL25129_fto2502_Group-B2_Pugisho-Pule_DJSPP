@@ -1,30 +1,43 @@
 import React from "react";
 import Search from "./Search";
+import { Link } from "react-router-dom";
+import { ThemeToggle } from "./ThemeToggle";
+import { useSearch } from "../context/SearchContext";
 
-/**
- * Header component that displays the app logo, title, search input, and user icon.
- *
- * @component
- * @param {Object} props
- * @param {string} props.searchTerm - The current value of the search input.
- * @param {Function} props.setSearchPodcasts - Function to update the search input state.
- * @returns {JSX.Element} The rendered Header component.
- */
-export const Header = ({ searchTerm, setSearchPodcasts }) => {
+export const Header = () => {
+  const { searchPodcasts, setSearchPodcasts } = useSearch();
+
   return (
     <header className="header">
       <h1 className="header-title">
         <img
-          src="/assets/logo.png"
+          src="/assets/logo-1.gif"
           alt="Podcast Logo"
           className="podcast-logo"
         />
-        PodcastApp
+        Binge Podcast
       </h1>
+      <div className="header-links">
+        <Link className="no-underline" to="/">
+          Home
+        </Link>
+        <div className="logo-container">
+          <img
+            src="/assets/logo-1.gif"
+            alt="Podcast Logo"
+            className="podcast-logo-main"
+          />
+        </div>
+        <Link className="no-underline" to="/favourites">
+          Favourites
+        </Link>
+      </div>
       <div className="search-container">
-        <Search value={searchTerm} onChange={setSearchPodcasts} />
+        <Search value={searchPodcasts} onChange={setSearchPodcasts} />
         <img src="/assets/user.png" alt="User Icon" className="user-icon" />
       </div>
+
+      <ThemeToggle />
     </header>
   );
 };
