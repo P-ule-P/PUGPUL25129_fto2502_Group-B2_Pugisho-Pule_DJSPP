@@ -4,6 +4,12 @@ import { getRecommendedShows } from "../utils/api";
 import { genres } from "../data/genres";
 import "../styles/Carousel.css";
 
+/**
+ * Carousel component that displays horizontally scrollable recommended podcast shows.
+ * Fetches shows on mount and displays them with navigation arrows.
+ * Clicking a show navigates to its detail page.
+ * @component
+ */
 export const Carousel = () => {
   const [shows, setShows] = useState([]);
   const scrollRef = useRef(null);
@@ -13,6 +19,10 @@ export const Carousel = () => {
     getRecommendedShows().then(setShows);
   }, []);
 
+  /**
+   * Scrolls the carousel left or right. Loops when reaching the end/start.
+   * @param {"left" | "right"} dir - Direction to scroll
+   */
   const scroll = (dir) => {
     const el = scrollRef.current;
     if (!el) return;

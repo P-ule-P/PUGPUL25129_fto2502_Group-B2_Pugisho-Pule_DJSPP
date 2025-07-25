@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
 import { useSearch } from "../context/SearchContext";
 
+/**
+ * Header component that includes navigation links, logo, search input,
+ * user icon, and a theme toggle button.
+ *
+ * @component
+ */
 export const Header = () => {
   const { searchPodcasts, setSearchPodcasts } = useSearch();
 

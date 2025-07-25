@@ -3,7 +3,10 @@ import { useAudioPlayer } from "../context/AudioPlayerContext";
 import "../styles/AudioPlayer.css";
 
 /**
- * Global audio player component fixed at the bottom of the screen
+ * Global audio player component fixed at the bottom of the screen.
+ * Uses context to sync with currently playing episode.
+ * Shows episode info, play/pause button, and seekable progress bar.
+ * @component
  */
 export const AudioPlayer = () => {
   const {
@@ -15,8 +18,13 @@ export const AudioPlayer = () => {
     togglePlay,
     seek,
   } = useAudioPlayer();
+
   const progressRef = useRef(null);
 
+  /**
+   * Handles seeking through the audio when slider is changed
+   * @param {React.ChangeEvent<HTMLInputElement>} e
+   */
   const handleSeek = (e) => {
     seek(Number(e.target.value));
   };
@@ -71,6 +79,11 @@ export const AudioPlayer = () => {
   );
 };
 
+/**
+ * Converts time in seconds to MM:SS format
+ * @param {number} seconds
+ * @returns {string}
+ */
 function formatTime(seconds) {
   if (isNaN(seconds)) return "00:00";
   const mins = Math.floor(seconds / 60);

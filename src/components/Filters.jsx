@@ -1,6 +1,16 @@
 import React from "react";
 import { genres } from "../data/genres";
 
+/**
+ * Filters component for selecting podcast genre and sorting order.
+ *
+ * @component
+ * @param {Object} props
+ * @param {string} props.genre - Currently selected genre ID
+ * @param {Function} props.setGenre - Function to update selected genre
+ * @param {string} props.sort - Currently selected sort value
+ * @param {Function} props.setSort - Function to update sort value
+ */
 export function Filters({ genre, setGenre, sort, setSort }) {
   return (
     <main className="filters">

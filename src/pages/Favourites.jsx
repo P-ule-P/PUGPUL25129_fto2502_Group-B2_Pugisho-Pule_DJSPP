@@ -9,7 +9,29 @@ import { resetAllProgress } from "../utils/progressStorage";
 import "../styles/Favourites.css";
 
 /**
- * Shows all favourited episodes, grouped by show, with sorting
+ * Favourites component that displays all favorited episodes grouped by show with sorting capabilities.
+ *
+ * @component
+ * @example
+ * return <Favourites />
+ *
+ * @description
+ * This component displays a user's favorite podcast episodes, grouped by show title. It provides:
+ * - Sorting options (newest, oldest, A-Z, Z-A)
+ * - Ability to clear all favorites
+ * - Ability to reset listening history
+ * - Visual display of episodes with metadata
+ *
+ * @returns {React.ReactElement} The rendered favorites page with episode listings and controls
+ *
+ * @property {Object} favourites - State object containing grouped favorite episodes
+ * @property {string} sort - Current sort method ('newest', 'oldest', 'az', 'za')
+ *
+ * @function useEffect - Fetches and sorts favorites when sort method changes
+ * @function getFavouritesGroupedByShow - Retrieves favorites from storage grouped by show
+ * @function sortFavourites - Sorts favorites according to current sort method
+ * @function clearFavourites - Clears all favorites from storage
+ * @function resetAllProgress - Resets all listening progress
  */
 export const Favourites = () => {
   const [favourites, setFavourites] = useState({});

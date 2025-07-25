@@ -1,202 +1,154 @@
-# 🎧 PodcastApp
+# 🎧 BingePodcast
 
-A modern, responsive React application that allows users to browse, search, filter, and view detailed podcast show and episode information.
+A modern, responsive React application that allows users to browse, search, filter, and listen to podcasts with full audio playback and listening progress tracking.
+Visit:
+podcastpugisho.vercel.app
 
 ## 📦 Features
 
 ### ✅ Core Features
 
-- **Browse Podcasts**  
-  Users can view a grid of podcast previews with:
+- **Browse Podcasts**
+  View a grid of podcasts showing:
 
   - Cover image
   - Title
   - Number of seasons
   - Genres
-  - Last updated info
-
-- **Detailed Show Page**  
-  Each podcast contains a detail view with:
-
-  - Title, description, cover image
-  - Genre tags
   - Last updated date
-  - Total number of seasons and episodes
-  - Dropdown to select a season
-  - Season metadata and episode list
-  - Season image and episode thumbnails
-  - Shortened episode descriptions for quick scanning
 
-- **Episode & Season Info**
-  - Season description and title displayed clearly
-  - Per-episode metadata including episode number, title, and summary
+- **Detailed Show View**
+
+  - Full show description and metadata
+  - Dropdown to select seasons
+  - Season and episode info
+  - Resume playback and view finished episodes
+
+- **Global Audio Player**
+
+  - Persistent player fixed at the bottom of the screen
+  - Continues playback across route changes
+  - Shows episode title and playback progress
+  - Allows pause/resume and seek controls
+  - Warns user if closing page while audio is playing
+
+- **Favourites System**
+
+  - Users can mark episodes as favourites
+  - View favourites grouped by show
+  - ↕Sort favourites by title/date
+  - Remove or reset all favourites
 
 ---
 
 ### 🔍 Search, Filter & Sort
 
-- **Search by Title**  
-  Live search bar to filter podcasts by name
+- **Live Search**
+- **Filter by Genre**
+- **Sort Options**:
 
-- **Filter by Genre**  
-  Users can filter podcasts based on genre (Technology, Business, etc.)
-
-- **Sort Options**  
-  Sort podcasts by:
-
-  - Recent (default)
-  - Oldest
-  - Title A–Z
-  - Title Z–A
-
-- **Preserved Filter/Search State**  
-  Filters and search terms persist even after navigating to a show and going back.
+  - 🆕 Newest
+  - 🕰️ Oldest
+  - 🔤 Title A-Z
+  - 🔠 Title Z-A
 
 ---
 
-### 📄 Pagination
+### 🎚️ Listening Progress
 
-- Paginated podcast grid with **12 podcasts per page**
-- Navigation buttons update the view and URL query parameters
+- 💾 Automatically saves progress per episode
+- ▶️ Resumes playback from last listened position
+- ✅ Marks episodes as finished when near end
+- 🔄 Clear/reset all listening history
+- 👤 Listening progress tied to mock user ID
 
 ---
 
 ### 📱 Responsive Design
 
-- Fully responsive layout
-- Season cover, episode images, and detail layouts adapt for:
-  - Desktop
-  - Tablets
-  - Mobile (with media queries)
+- 💻🖥️📱 Optimized for desktop, tablet, and mobile
 
 ---
 
 ## 🔧 Tech Stack
 
-- **React**
-- **React Router DOM**
-- **Vite**
-- **JavaScript (ES6+)**
-- **HTML & CSS**
-
----
-
-## 📁 Project Structure
-
-src/
-├── 📁 public/
-│ └── 📁 assets/
-│ ├── 🖼️ logo.png
-│ ├── 🔍 search.png
-│ ├️── 👤 user.png
-│ └── 🌐 favicon.png
-├── 📁 src/
-├── 📁 components/
-│ ├── 🎩 Header.jsx
-│ ├── 🥅 Filters.jsx
-│ ├── 🎧 PodcastCard.jsx
-│ ├── 🕸️ PodcastGrid.jsx
-│ ├── 📄 Pagination.jsx
-│ └── 🔍Search.jsx
-├── 📁 data/
-│ └── 🎵 genres.js
-├── 📁 pages/
-│ ├── 🏠 Home.jsx
-│ └── 📺 ShowDetail.jsx
-├── 📁 styles/
-│ ├── 🎨 App.css
-│ └── 📲 Mediaqueries.css
-├── 📁 utils/
-│ ├── 📊 api.js
-│ ├── 🎶 genreUtils.js
-│ └── ⏱️ time.js
-├── 📚 App.jsx
-└── 📜 main.jsx
+- ⚛️ **React**
+- 🔁 **React Router DOM**
+- ⚡ **Vite**
+- 💛 **JavaScript (ES6+)**
+- 🌐 **HTML & CSS**
 
 ---
 
 ## 🚀 Getting Started
 
-## 🛠️ Installation
+### 🛠️ Installation
 
 > 📦 Requirements:
 >
-> - Node.js
-> - npm
+> - Node.js (18+)
+> - npm (or yarn)
 
 1. **Clone the repository**
 
-```
-git clone https://github.com/P-ule-P/PUGPUL25129_fto2502_Group-B2_Pugisho-Pule_DJS05.git
-cd PUGPUL25129_fto2502_Group-B2_Pugisho-Pule_DJS05
+```bash
+git clone https://github.com/your-username/PodcastApp.git
+cd PodcastApp
 ```
 
-2.  **Install dependencies**
+2. **Install dependencies**
 
-```
+```bash
 npm install
 ```
 
 3. **Run the development server**
 
-```
+```bash
 npm run dev
-The app should now be running at http://localhost:5173.
 ```
+
+Open your browser at: `http://localhost:5173`
 
 ---
 
 ## 📋 How to Use
 
-### 🚀 Launch the App
+### 🎧 Browse & Listen
 
-- Run the development server using `npm run dev`
-- Open your browser at `http://localhost:5173`
+- Browse podcast shows from homepage
+- Click a podcast card to view detailed show info
+- Select a season to explore episodes
+- Click play to begin listening
 
-### 🗂️ Browse Podcasts
+### 🔊 Use the Audio Player
 
-- The homepage displays a clean grid of podcast cards
-- Each card includes an image, title, genres, season count, and update date
+- Player stays at bottom of screen
+- Pause/resume or ⏩ seek with slider
+- See real-time progress updates
 
-### 🔍 Search
+### 🧠 Save Listening Progress
 
-- Use the search input in the header to find podcasts by title
-- The results update in real-time as you type
+- Episode position is saved automatically
+- When revisiting, playback resumes from last point
+- Finished episodes marked
 
-### 🎯 Filter by Genre
+### 🧹 Manage Progress & Favourites
 
-- Use the **Genre** dropdown to show only podcasts in a specific category (e.g., Technology, Comedy)
+- ❤️ Mark/unmark favourites from ShowDetail or Favourites page
+- ↕️ Sort favourites or 🗑️ clear all
+- 🔄 Reset listening history with one button
 
-### ↕️ Sort the Results
+---
 
-- Use the **Sort** dropdown to:
-  - Sort alphabetically (A–Z or Z–A)
-  - Sort by most recent or oldest update
+## 👤 User-Specific Features
 
-### 📄 Navigate with Pagination
+- 👤 All listening progress is tied to a mock user ID (e.g., `mockUser123`)
+- 🛠️ Future updates can include switching users and loading their respective data
 
-- Use the numbered buttons at the bottom of the grid to switch between pages
-- 12 podcasts per page for optimal readability
+---
 
-### 📘 View Show Details
+## 🙌 Author
 
-- Click any podcast card to open a full **Show Detail Page**
-- Includes podcast description, genre tags, update info, and all seasons/episodes
-
-### 🔁 Switch Between Seasons
-
-- Use the **season dropdown** on the show page to view episodes from a different season
-- Season image, title, and description update accordingly
-
-### 🎧 Browse Episodes
-
-- Each episode displays:
-  - Episode number
-  - Title
-  - Short description
-  - Associated season image
-
-### 🡐 Return to Browse
-
-- Click the arrow back icon (←) at the top left to return to the homepage
-- Your search, filter, and sort settings will still be applied
+Pugisho Pule — Final Project (DJS05)
+For academic use. All design, logic, and UI authored by student.

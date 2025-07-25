@@ -3,6 +3,15 @@ import { formatTimeAgo } from "../utils/time";
 import { mapGenreIdsToNames } from "../utils/genreUtils";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * PodcastCard component that displays basic podcast show information
+ * and navigates to the Show Detail page when clicked.
+ *
+ * @component
+ * @param {Object} props
+ * @param {Object} props.podcast - Podcast show data
+ * @param {Array} props.genres - Array of available genre objects
+ */
 export const PodcastCard = ({ podcast, genres }) => {
   const navigate = useNavigate();
   const genreNames = mapGenreIdsToNames(podcast.genres, genres);

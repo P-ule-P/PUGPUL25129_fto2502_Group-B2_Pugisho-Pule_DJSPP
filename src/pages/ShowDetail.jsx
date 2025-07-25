@@ -6,6 +6,41 @@ import { useAudioPlayer } from "../context/AudioPlayerContext";
 import { getEpisodeProgress } from "../utils/progressStorage";
 import { FavouriteButton } from "../components/FavouriteButton";
 
+/**
+ * ShowDetail component that displays detailed information about a podcast show.
+ *
+ * @component
+ * @example
+ * const { id } = useParams();
+ * return <ShowDetail key={id} />
+ *
+ * @description
+ * This component displays comprehensive information about a podcast show including:
+ * - Show metadata (title, description, genres, update date)
+ * - Season selection dropdown
+ * - Episode list with playback progress tracking
+ * - Playback controls and favorite functionality
+ * - Responsive layout for all screen sizes
+ *
+ * @returns {React.ReactElement} The detailed show view with seasons and episodes
+ *
+ * @property {string} id - Show ID from URL parameters
+ * @property {Object|null} show - The show data object
+ * @property {number} selectedSeasonIndex - Currently selected season index
+ * @property {boolean} loading - Loading state indicator
+ * @property {string|null} error - Error message if any
+ *
+ * @uses useParams - React Router hook to access URL parameters
+ * @uses useNavigate - React Router hook for navigation
+ * @uses useAudioPlayer - Context hook for audio playback control
+ * @uses fetchShowById - API function to fetch show data
+ * @uses genres - Genre data for show categorization
+ * @uses getEpisodeProgress - Utility to retrieve playback progress
+ * @uses FavouriteButton - Component for favorite functionality
+ *
+ * @function handleGoBack - Navigates back to the home page
+ * @function setAudioSrc - Sets the current audio source for playback
+ */
 export default function ShowDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
